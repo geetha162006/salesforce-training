@@ -1,0 +1,210 @@
+# Day 3 - Salesforce Data Modeling
+
+## 1. Difference Between App, Object, Record, and Field
+
+| Term | Description |
+|--------|-------------|
+| App | A collection of related objects, tabs, and features |
+| Object | Database table that stores data |
+| Record | A single row of data inside an object |
+| Field | Individual information stored in an object |
+
+### Example:
+
+College Management App
+
+Student Object
+
+Record:
+Student Name: John
+
+Fields:
+- Student ID
+- Name
+- Email
+- Age
+
+---
+
+## 2. Standard vs Custom Objects
+
+### Standard Objects
+Pre-built Salesforce objects provided by Salesforce.
+
+Examples:
+
+- Account
+- Contact
+- Opportunity
+
+### Custom Objects
+Objects created by developers according to business needs.
+
+Examples:
+
+- Student
+- Faculty
+- Course
+- Department
+
+---
+
+## 3. College Data Model
+
+### Objects
+
+1. Student
+2. Faculty
+3. Course
+4. Department
+
+### Relationships
+
+Department → Course
+(One Department can have many Courses)
+
+Department → Faculty
+(One Department can have many Faculty members)
+
+Course → Student
+(One Course can have many Students)
+
+Faculty → Course
+(One Faculty can teach many Courses)
+
+### Relationship Type
+
+Lookup Relationships:
+
+- Student → Course
+- Course → Faculty
+- Faculty → Department
+
+---
+
+## Diagram
+
+```text
+Department
+     |
+     |
+     ↓
+ Faculty -----> Course
+                   |
+                   |
+                   ↓
+               Student
+```
+
+---
+
+## 4. Formula Fields
+
+### Formula Field 1: Full Name
+
+Formula:
+
+First Name + Last Name
+
+Reason:
+Automatically combines names and avoids manual entry.
+
+---
+
+### Formula Field 2: Percentage
+
+Formula:
+
+(Obtained Marks / Total Marks) * 100
+
+Reason:
+Percentage changes automatically whenever marks change.
+
+---
+
+### Formula Field 3: Remaining Seats
+
+Formula:
+
+Total Seats - Filled Seats
+
+Reason:
+Shows available seats instantly.
+
+---
+
+## 5. Validation Rules
+
+### Validation Rule 1:
+
+Email cannot be blank
+
+Prevents:
+Missing student contact information
+
+---
+
+### Validation Rule 2:
+
+Student age cannot be negative
+
+Prevents:
+Incorrect age data
+
+---
+
+### Validation Rule 3:
+
+Course seats cannot exceed maximum limit
+
+Prevents:
+Overbooking students
+
+---
+
+## 6. Reflection
+
+### Why structured enterprise data matters
+
+Companies cannot efficiently manage large amounts of data using random spreadsheets because:
+
+- Data becomes inconsistent
+- Duplicate records occur
+- Difficult to search information
+- Relationships between data are missing
+- Reporting becomes difficult
+
+Structured data helps companies:
+
+- Maintain data accuracy
+- Improve decision-making
+- Generate reports quickly
+- Scale business operations efficiently
+
+---
+
+## Reflective Questions
+
+### Why can’t companies manage everything using Excel sheets?
+
+Large organizations have huge amounts of data that become difficult to manage in spreadsheets.
+
+### Why are relationships important between objects?
+
+Relationships connect related data and reduce duplication.
+
+### What problems happen if data is inconsistent?
+
+Wrong reports, duplicate records, and poor decisions.
+
+### Why should repetitive calculations be automated?
+
+Automation saves time and reduces errors.
+
+### Why should invalid data be blocked early?
+
+To maintain data quality and system reliability.
+
+### Why is Salesforce called a metadata-driven platform?
+
+Because applications are built using configurations and metadata rather than changing core code.
