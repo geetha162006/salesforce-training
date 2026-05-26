@@ -1,0 +1,140 @@
+# Day 2 - Salesforce Platform Basics
+
+## 1. What is Salesforce Platform?
+
+Salesforce Platform is a cloud-based platform that helps organizations manage customer relationships and build applications. It provides tools for creating apps, managing data, automating processes, and extending functionality using configuration and coding.
+
+---
+
+## How CRM Concepts Fit into Salesforce Platform
+
+CRM concepts such as Account, Contact, and Opportunity are represented as Objects inside Salesforce.
+
+- Account → Stores company/customer information
+- Contact → Stores customer details
+- Opportunity → Stores potential sales information
+
+These objects work together inside an App to manage business processes.
+
+Example:
+
+Sales App
+│
+├── Account Object
+├── Contact Object
+└── Opportunity Object
+
+---
+
+## 2. Explain App, Object, and Tab
+
+### App
+An App is a collection of related objects, tabs, and features designed for a specific business purpose.
+
+Example:
+Sales App
+Service App
+Hospital Management App
+
+### Object
+Objects are database tables used to store information.
+
+Examples:
+
+- Account Object
+- Contact Object
+- Opportunity Object
+
+### Tab
+A Tab provides users access to objects and their records.
+
+Examples:
+
+- Account Tab
+- Contact Tab
+- Opportunity Tab
+
+---
+
+## 3. Configuration vs Coding
+
+| Configuration (No Code) | Coding (Apex) |
+|-------------------------|---------------|
+| Uses clicks instead of code | Uses programming |
+| Faster development | More flexibility |
+| Used for simple requirements | Used for complex requirements |
+
+### Configuration Examples:
+
+1. Creating custom objects
+2. Creating workflows or validation rules
+
+### Coding Examples:
+
+1. Complex business logic with Apex
+2. Custom integrations with external systems
+
+---
+
+## 4. Difference Between App and Object
+
+App:
+- Collection of related features and objects
+- Provides a complete user experience
+
+Object:
+- Stores data records
+- Similar to database tables
+
+---
+
+## 5. Multi-Tenant Architecture
+
+Multi-tenant architecture means multiple customers share the same Salesforce infrastructure while keeping their data secure and isolated.
+
+Benefits:
+- Lower cost
+- Automatic updates
+- Better scalability
+
+---
+
+## 6. How Salesforce Allows Developers to Extend Functionality
+
+Salesforce provides:
+
+- Apex programming language
+- Lightning Web Components (LWC)
+- APIs
+- Visualforce
+- AppExchange
+
+Developers use these tools to build custom features.
+
+---
+
+## 7. System Design
+
+Example: College Management System
+
+### App Name:
+College Management App
+
+### Objects:
+
+1. Student
+2. Faculty
+3. Course
+4. Attendance
+5. Results
+
+### User Interaction:
+
+- Students view attendance and results
+- Faculty manage attendance and marks
+- Admin manages courses and users
+
+---
+
+1. Agentforce 360 Platform Basics completion screenshot
+2. Agentforce 360 Platform Development Basics completion screenshot
