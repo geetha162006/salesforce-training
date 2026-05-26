@@ -1,0 +1,228 @@
+# Day 5 - Apex Introduction
+
+## 1. What is Apex?
+
+Apex is Salesforce’s programming language used to implement custom business logic and functionality beyond configuration and flows.
+
+Apex allows developers to:
+
+- Create custom business rules
+- Perform complex calculations
+- Integrate external systems
+- Handle advanced logic
+- Work with Salesforce data
+
+---
+
+## 2. Difference: Flow vs Apex
+
+| Flow | Apex |
+|--------|------|
+| No-code automation | Programming-based automation |
+| Built using drag-and-drop | Written using code |
+| Best for simple workflows | Best for complex business logic |
+| Easy to maintain | More flexible |
+
+---
+
+## Difference: Configuration vs Coding
+
+| Configuration | Coding |
+|---------------|---------|
+| Uses clicks | Uses code |
+| Faster development | More customization |
+| Less technical knowledge | Requires programming knowledge |
+| Good for simple requirements | Good for complex requirements |
+
+---
+
+## 3. Real Examples Where Apex Is Needed
+
+### Example 1: Complex Fee Calculation
+
+Scenario:
+
+Different students receive different scholarships and discounts.
+
+Why Apex is needed:
+
+Flow becomes difficult for multiple calculations and conditions.
+
+---
+
+### Example 2: Integration with External Payment System
+
+Scenario:
+
+Students pay fees through external payment gateways.
+
+Why Apex is needed:
+
+External API integration requires custom programming.
+
+---
+
+### Example 3: Advanced Eligibility Logic
+
+Scenario:
+
+Student eligibility depends on:
+
+- Attendance percentage
+- Previous marks
+- Special conditions
+
+Why Apex is needed:
+
+Complex business rules require custom logic.
+
+---
+
+## 4. Integrated College Management System
+
+### CRM
+
+Student admission pipeline:
+
+Lead Student → Registered Student → Course Enrollment
+
+---
+
+### Objects
+
+- Student
+- Course
+- Faculty
+- Department
+
+---
+
+### Relationships
+
+Department
+↓
+Faculty
+↓
+Course
+↓
+Student
+
+---
+
+### Validation Rules
+
+- Email cannot be empty
+- Student age cannot be negative
+- Course seats cannot exceed maximum
+
+---
+
+### Formula Fields
+
+Remaining Seats:
+
+Total Seats - Filled Seats
+
+Percentage:
+
+(Obtained Marks / Total Marks) × 100
+
+---
+
+### Flow Automation
+
+Examples:
+
+1. Send registration confirmation email
+2. Generate student ID automatically
+3. Notify faculty when course becomes full
+
+---
+
+### Apex Custom Business Rule
+
+If student attendance <75% and marks <40%
+
+Then:
+
+- Generate warning notification
+- Restrict exam eligibility
+
+---
+
+## 5. Pseudocode Examples
+
+### Example 1
+
+IF seats are full
+
+THEN block registration
+
+---
+
+### Example 2
+
+IF attendance <75%
+
+THEN notify student
+
+---
+
+### Example 3
+
+IF fee payment is overdue
+
+THEN send reminder email
+
+---
+
+### Example 4
+
+IF student marks >90%
+
+THEN assign scholarship
+
+---
+
+## 6. Reflection
+
+### Why enterprise systems eventually need programming
+
+Enterprise systems become more complex as organizations grow.
+
+Clicks and configuration work well for simple requirements, but they cannot handle:
+
+- Complex calculations
+- External integrations
+- Advanced business logic
+- Large-scale customizations
+
+Programming provides flexibility and helps businesses implement unique requirements.
+
+---
+
+## Reflective Questions
+
+### Why is Apex needed if Salesforce already has Flows?
+
+Apex handles complex logic and integrations that flows cannot manage efficiently.
+
+### When should developers prefer no-code solutions?
+
+When requirements are simple and can be achieved through configuration.
+
+### What problems require custom programming?
+
+Complex calculations, external APIs, and advanced business rules.
+
+### Why is business logic important in enterprise systems?
+
+Business logic ensures processes work correctly according to company rules.
+
+### Why should developers avoid unnecessary coding?
+
+Extra code increases maintenance complexity.
+
+### How does programming increase flexibility?
+
+Programming allows developers to create customized solutions for unique requirements.
