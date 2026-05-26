@@ -1,0 +1,201 @@
+# Day 4 - Salesforce Flow Builder
+
+## 1. What is Flow Builder?
+
+Flow Builder is a Salesforce automation tool used to automate business processes without writing code.
+
+It allows users to:
+
+- Create workflows visually
+- Update records automatically
+- Make decisions using conditions
+- Send notifications and emails
+- Reduce manual work
+
+Flow Builder improves productivity and reduces human errors.
+
+---
+
+## 2. Types of Flows
+
+### Screen Flow
+
+A Screen Flow displays screens and collects user input.
+
+Examples:
+
+- Student registration form
+- Fee payment form
+- Complaint submission form
+
+Characteristics:
+
+- Requires user interaction
+- Shows forms/screens
+- Runs manually
+
+---
+
+### Record Triggered Flow
+
+A Record Triggered Flow automatically executes when a record is created, updated, or deleted.
+
+Examples:
+
+- Send email after registration
+- Update course seats automatically
+- Notify faculty when a course becomes full
+
+Characteristics:
+
+- Runs automatically
+- No user interaction needed
+- Triggered by record changes
+
+---
+
+## 3. Automation Ideas for College Management System
+
+### 1. Auto Email After Student Registration
+
+Why automation helps:
+
+Students receive immediate confirmation and administrators save time.
+
+---
+
+### 2. Auto Generate Student ID
+
+Why automation helps:
+
+Avoids duplicate IDs and reduces manual work.
+
+---
+
+### 3. Auto Update Remaining Seats
+
+Why automation helps:
+
+Shows real-time seat availability.
+
+---
+
+### 4. Notify Faculty When Course Is Full
+
+Why automation helps:
+
+Faculty members can quickly take necessary action.
+
+---
+
+### 5. Send Reminder Before Fee Deadline
+
+Why automation helps:
+
+Students receive reminders and late payments reduce.
+
+---
+
+## 4. Flow Diagram
+
+### Automation Example:
+Auto Email After Student Registration
+
+```text
+Student Registration
+        ↓
+Trigger: New Student Record Created
+        ↓
+Check if Email Exists?
+        ↓
+      Yes
+        ↓
+Send Confirmation Email
+        ↓
+Update Registration Status
+        ↓
+Process Complete
+```
+
+---
+
+## 5. Manual vs Automated Process
+
+### Process: Student Registration
+
+### Manual Process
+
+1. Student fills form
+2. Staff enters details manually
+3. Staff sends confirmation email
+4. Staff assigns student ID
+
+Problems:
+
+- Time consuming
+- Human errors
+- Duplicate records
+- Delays
+
+### Automated Process using Salesforce
+
+1. Student submits form
+2. Flow automatically creates record
+3. Student ID generated automatically
+4. Email sent automatically
+
+Benefits:
+
+- Faster processing
+- Reduced errors
+- Better efficiency
+- Improved user experience
+
+---
+
+## 6. Reflection
+
+### Why automation matters in enterprise systems
+
+Companies automate repetitive processes because:
+
+- Saves time
+- Reduces manual effort
+- Improves productivity
+- Ensures consistency
+- Reduces human errors
+- Improves customer satisfaction
+
+Automation helps organizations focus on important tasks instead of repetitive work.
+
+---
+
+## Reflective Questions
+
+### Why do companies automate workflows?
+
+To save time and improve efficiency.
+
+### What problems happen with manual processes?
+
+Human errors, delays, and inconsistency.
+
+### Difference between Screen Flow and Record Triggered Flow?
+
+Screen Flow:
+Requires user interaction.
+
+Record Triggered Flow:
+Runs automatically after record changes.
+
+### Why is no-code automation powerful?
+
+Business users can automate tasks without programming.
+
+### When should automation be avoided?
+
+When processes require human judgment or approvals.
+
+### How does automation improve consistency and productivity?
+
+Automation performs tasks in the same way every time and reduces manual effort.
