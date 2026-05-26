@@ -1,0 +1,131 @@
+# Day 6 - Triggers and SOQL
+
+## 1. What is SOQL?
+
+SOQL (Salesforce Object Query Language) is used to retrieve data from Salesforce objects.
+
+SOQL allows developers to:
+
+- Search records
+- Retrieve specific fields
+- Filter data
+- Work with relationships
+
+Example:
+
+Retrieve all students from Student object.
+
+---
+
+## 2. What is an Apex Trigger?
+
+An Apex Trigger is code that executes automatically when events happen on records.
+
+Examples of events:
+
+- Insert
+- Update
+- Delete
+
+Triggers help automate actions after data changes.
+
+---
+
+## 3. Difference Between Flow and Trigger
+
+| Flow | Trigger |
+|-------|----------|
+| No-code automation | Code-based automation |
+| Simple business processes | Complex logic |
+| Easy to build | More flexible |
+| Drag and drop | Programming required |
+
+---
+
+## Difference Between Before and After Trigger
+
+| Before Trigger | After Trigger |
+|----------------|--------------|
+| Executes before saving data | Executes after saving data |
+| Used for validation | Used for related actions |
+| Faster processing | Access generated record IDs |
+
+---
+
+## 4. Trigger Use Cases
+
+### 1. After Student Registration
+
+Event:
+Student record created
+
+Action:
+Send welcome email
+
+---
+
+### 2. After Course Becomes Full
+
+Event:
+Course seats updated
+
+Action:
+Notify faculty
+
+---
+
+### 3. After Attendance Drops Below 75%
+
+Event:
+Attendance updated
+
+Action:
+Send warning notification
+
+---
+
+### 4. After Fee Payment Completion
+
+Event:
+Fee status updated
+
+Action:
+Generate receipt
+
+---
+
+### 5. After Student Marks Updated
+
+Event:
+Marks modified
+
+Action:
+Calculate scholarship eligibility
+
+---
+
+## 5. Query Examples
+
+Find all students in Course A
+
+Find all courses handled by Faculty X
+
+Find students with attendance below 75%
+
+Find students who have not paid fees
+
+Find courses with remaining seats
+
+---
+
+## 6. Reflection
+
+Enterprise systems need event-driven behavior because systems must react automatically when data changes.
+
+Benefits:
+
+- Faster processing
+- Better productivity
+- Reduced manual work
+- Real-time updates
+- Improved user experience
