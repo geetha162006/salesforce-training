@@ -1,0 +1,348 @@
+# Day 11 – Testing and Asynchronous Processing
+
+## Why Testing Matters
+
+Testing is an essential part of software development that ensures applications function correctly before deployment. In Salesforce, testing validates Apex classes, triggers, Flows, and integrations to prevent issues in production environments.
+
+### Benefits of Testing
+
+* Identifies bugs before deployment.
+* Ensures business requirements are met.
+* Improves application quality and reliability.
+* Prevents regressions when new features are added.
+* Increases user confidence.
+* Required for Salesforce deployment (minimum 75% Apex code coverage).
+
+### Salesforce Testing Features
+
+* Apex Test Classes
+* Test.startTest()
+* Test.stopTest()
+* Assertions
+* Mock Data Creation
+* Code Coverage Reports
+
+### Example Test Method
+
+```apex
+@isTest
+private class AccountTest {
+
+    @isTest
+    static void testAccountCreation() {
+
+        Account acc = new Account(Name='Test Account');
+
+        insert acc;
+
+        System.assertNotEquals(null, acc.Id);
+    }
+}
+```
+
+---
+
+# What is Asynchronous Processing?
+
+Asynchronous processing allows tasks to run in the background without requiring the user to wait for completion.
+
+Instead of processing everything immediately, Salesforce places jobs into a queue and executes them separately.
+
+### Why Use Asynchronous Processing?
+
+* Improve user experience.
+* Handle large data volumes.
+* Perform long-running operations.
+* Integrate with external systems.
+* Reduce processing delays.
+
+### Types of Asynchronous Apex
+
+## 1. Future Methods
+
+Used for simple background processing.
+
+```apex
+@future
+public static void processData() {
+    // Background task
+}
+```
+
+### Use Cases
+
+* Sending notifications
+* Updating records
+* Calling external services
+
+---
+
+## 2. Queueable Apex
+
+Provides more flexibility than Future Methods.
+
+```apex
+public class MyQueueableJob implements Queueable {
+
+    public void execute(QueueableContext context) {
+
+        System.debug('Queueable Job Running');
+    }
+}
+```
+
+Execution:
+
+```apex
+System.enqueueJob(new MyQueueableJob());
+```
+
+### Benefits
+
+* Supports complex logic
+* Supports job chaining
+* Better monitoring
+
+---
+
+## 3. Batch Apex
+
+Processes large datasets efficiently.
+
+```apex
+Database.executeBatch(new MyBatchClass());
+```
+
+### Benefits
+
+* Handles millions of records
+* Prevents governor limit issues
+* Improves scalability
+
+---
+
+## 4. Scheduled Apex
+
+Runs jobs automatically at scheduled times.
+
+```apex
+System.schedule(
+    'Daily Job',
+    '0 0 8 * * ?',
+    new MyScheduler()
+);
+```
+
+### Benefits
+
+* Automation
+* Recurring processing
+* Scheduled maintenance
+
+---
+
+# Important Test Cases
+
+## Test Case 1: Account Record Creation
+
+### Objective
+
+Verify that account records are created successfully.
+
+### Expected Result
+
+Account record exists in the database.
+
+---
+
+## Test Case 2: Validation Rule Testing
+
+### Objective
+
+Verify validation rules prevent invalid data.
+
+### Expected Result
+
+Record save operation fails when invalid values are entered.
+
+---
+
+## Test Case 3: Trigger Testing
+
+### Objective
+
+Verify trigger executes expected business logic.
+
+### Expected Result
+
+Fields update correctly after trigger execution.
+
+---
+
+## Test Case 4: Future Method Testing
+
+### Objective
+
+Verify asynchronous future methods execute correctly.
+
+### Example
+
+```apex
+Test.startTest();
+
+MyFutureClass.processData();
+
+Test.stopTest();
+```
+
+### Expected Result
+
+Future method completes successfully.
+
+---
+
+## Test Case 5: Queueable Apex Testing
+
+### Objective
+
+Verify queueable jobs execute properly.
+
+### Expected Result
+
+Queued jobs complete and update records correctly.
+
+---
+
+## Test Case 6: Batch Apex Testing
+
+### Objective
+
+Verify large data processing.
+
+### Expected Result
+
+All records are processed successfully.
+
+---
+
+## Test Case 7: Scheduled Apex Testing
+
+### Objective
+
+Verify scheduled jobs run correctly.
+
+### Expected Result
+
+Scheduled job executes without errors.
+
+---
+
+# Async Use Cases
+
+Asynchronous processing is widely used in enterprise Salesforce applications.
+
+## Use Case 1: Sending Emails
+
+When large numbers of emails need to be sent, asynchronous processing prevents delays for users.
+
+### Example
+
+* Welcome Emails
+* Marketing Emails
+* Notification Emails
+
+---
+
+## Use Case 2: External API Integrations
+
+Salesforce can communicate with external systems without slowing user interactions.
+
+### Example
+
+* Payment Gateway Integration
+* ERP Integration
+* Third-Party CRM Synchronization
+
+---
+
+## Use Case 3: Large Data Processing
+
+Batch Apex processes thousands or millions of records efficiently.
+
+### Example
+
+* Data Migration
+* Data Cleanup
+* Mass Updates
+
+---
+
+## Use Case 4: Scheduled Reports
+
+Scheduled Apex automatically generates reports at predefined intervals.
+
+### Example
+
+* Daily Sales Reports
+* Weekly Performance Reports
+* Monthly Revenue Reports
+
+---
+
+## Use Case 5: Background Calculations
+
+Complex calculations can run without affecting application performance.
+
+### Example
+
+* Revenue Calculations
+* Forecasting
+* Analytics Processing
+
+---
+
+# Reliability Discussion
+
+Reliability refers to the ability of a system to consistently perform its intended functions without failure.
+
+### How Testing Improves Reliability
+
+* Detects defects early.
+* Ensures business rules work correctly.
+* Validates integrations.
+* Reduces production incidents.
+* Improves software quality.
+
+### How Asynchronous Processing Improves Reliability
+
+* Prevents user interface slowdowns.
+* Handles large workloads efficiently.
+* Reduces system bottlenecks.
+* Improves scalability.
+* Supports fault-tolerant processing.
+
+### Enterprise Benefits
+
+* Better user experience.
+* Higher availability.
+* Improved performance.
+* Easier maintenance.
+* Increased customer satisfaction.
+
+---
+
+# Reflection
+
+This exercise helped me understand the importance of testing and asynchronous processing in Salesforce development.
+
+### Key Learnings
+
+* Testing ensures software quality and stability.
+* Apex test classes validate business logic before deployment.
+* Asynchronous processing improves performance by running tasks in the background.
+* Future Methods, Queueable Apex, Batch Apex, and Scheduled Apex each serve different business needs.
+* Reliable applications require both strong testing strategies and efficient background processing.
+
+### Conclusion
+
+Enterprise Salesforce applications must handle large amounts of data, automation, and user interactions efficiently. Testing ensures correctness, while asynchronous processing improves scalability and performance. Together, they create reliable, maintainable, and high-quality software solutions that support business growth and customer satisfaction.
