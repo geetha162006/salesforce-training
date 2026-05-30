@@ -1,0 +1,239 @@
+# Day 8 – Lightning Web Components (LWC) Basics
+
+## What is LWC?
+
+Lightning Web Components (LWC) is Salesforce's modern framework for building fast, reusable, and lightweight user interfaces on the Salesforce Platform. It is based on modern web standards such as HTML, JavaScript, and CSS.
+
+LWC allows developers to create interactive applications that run efficiently in Salesforce environments.
+
+### Key Features of LWC
+
+* Built on modern JavaScript standards.
+* Fast performance and efficient rendering.
+* Reusable components.
+* Easy integration with Salesforce data.
+* Secure and scalable architecture.
+* Supports responsive user interfaces.
+
+### LWC File Structure
+
+```text
+helloWorld/
+│
+├── helloWorld.html
+├── helloWorld.js
+├── helloWorld.js-meta.xml
+└── helloWorld.css (optional)
+```
+
+---
+
+## Why Salesforce Uses LWC
+
+Salesforce introduced LWC to improve performance and align development with modern web technologies.
+
+### Benefits of LWC
+
+### 1. Better Performance
+
+LWC uses native browser capabilities, making components load and render faster.
+
+### 2. Reusability
+
+Developers can create components once and reuse them across multiple pages.
+
+### 3. Modern Standards
+
+Uses standard HTML, CSS, and JavaScript instead of proprietary frameworks.
+
+### 4. Improved Developer Experience
+
+Developers with web development knowledge can quickly learn and build applications.
+
+### 5. Enhanced Security
+
+Works with Salesforce security models such as Lightning Locker and Lightning Web Security.
+
+### 6. Seamless Salesforce Integration
+
+Can easily connect with Apex classes, Salesforce objects, and platform services.
+
+---
+
+## Your UI Screens
+
+### Screen 1: Lightning App Builder
+
+This screen shows the Home Page where the custom LWC component is added.
+
+**Purpose:**
+
+* Configure page layout.
+* Add custom Lightning Web Components.
+* Publish the page for users.
+
+---
+
+### Screen 2: helloWorld Component
+
+Example component displayed on the Home Page.
+
+```html
+<template>
+    <lightning-card title="Hello World">
+        <p>Hello Salesforce!</p>
+    </lightning-card>
+</template>
+```
+
+**Purpose:**
+
+* Display custom content.
+* Demonstrate basic LWC functionality.
+
+---
+
+### Screen 3: Published Home Page
+
+After activation, the Home Page displays the helloWorld component.
+
+**Expected Output:**
+
+```text
+-------------------------
+|      Hello World      |
+-------------------------
+| Hello Salesforce!     |
+-------------------------
+```
+
+> Insert screenshots of your App Builder page, LWC component, and activated Home Page here.
+
+---
+
+## Component Breakdown
+
+### HTML File (View Layer)
+
+**helloWorld.html**
+
+```html
+<template>
+    <lightning-card title="Hello World">
+        <p>Hello Salesforce!</p>
+    </lightning-card>
+</template>
+```
+
+Responsibilities:
+
+* Defines the user interface.
+* Displays component content.
+* Uses Salesforce Lightning Base Components.
+
+---
+
+### JavaScript File (Logic Layer)
+
+**helloWorld.js**
+
+```javascript
+import { LightningElement } from 'lwc';
+
+export default class HelloWorld extends LightningElement {
+}
+```
+
+Responsibilities:
+
+* Handles component logic.
+* Manages data and events.
+* Communicates with Apex if required.
+
+---
+
+### Metadata File
+
+**helloWorld.js-meta.xml**
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>64.0</apiVersion>
+    <isExposed>true</isExposed>
+    <targets>
+        <target>lightning__HomePage</target>
+    </targets>
+</LightningComponentBundle>
+```
+
+Responsibilities:
+
+* Exposes the component to Salesforce.
+* Defines where the component can be used.
+
+---
+
+## Frontend vs Backend Logic
+
+| Frontend (LWC)     | Backend (Apex)      |
+| ------------------ | ------------------- |
+| HTML UI Components | Apex Classes        |
+| CSS Styling        | Database Operations |
+| JavaScript Logic   | Business Logic      |
+| User Interaction   | Data Processing     |
+| Form Validation    | Record Management   |
+| Event Handling     | Integrations        |
+
+### Frontend Example
+
+```javascript
+handleClick() {
+    this.message = 'Button Clicked';
+}
+```
+
+### Backend Example
+
+```apex
+public with sharing class AccountController {
+    @AuraEnabled
+    public static List<Account> getAccounts() {
+        return [SELECT Id, Name FROM Account];
+    }
+}
+```
+
+### Interaction Flow
+
+```text
+User
+ ↓
+LWC Component
+ ↓
+JavaScript Controller
+ ↓
+Apex Class
+ ↓
+Salesforce Database
+ ↓
+Response to LWC
+ ↓
+Updated UI
+```
+
+---
+
+## Reflection
+
+Learning Lightning Web Components provided a practical understanding of Salesforce frontend development. LWC simplifies UI development by using standard web technologies while maintaining deep integration with Salesforce services.
+
+Through this exercise, I learned:
+
+* How Salesforce components are structured.
+* How HTML, JavaScript, and XML work together in LWC.
+* How components are deployed and added to Lightning pages.
+* The difference between frontend and backend responsibilities.
+* The importance of reusable and modular design.
+
+LWC is a powerful framework that helps developers build modern, responsive, and maintainable Salesforce applications. It improves performance, enhances user experience, and supports enterprise-level application development through reusable components and structured architecture.
