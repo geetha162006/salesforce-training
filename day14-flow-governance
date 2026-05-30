@@ -1,0 +1,324 @@
+# Day 14 – Flow Governance and Approval Workflows
+
+## Introduction
+
+Salesforce Flow is a powerful automation tool that helps organizations automate business processes without writing code. As organizations grow, managing flows effectively becomes important to ensure performance, scalability, and compliance.
+
+Flow Governance refers to the practices, standards, and controls used to design, maintain, and monitor Salesforce automation solutions.
+
+---
+
+# Approval Workflow Examples
+
+Approval workflows automate business approval processes and ensure that important decisions follow organizational policies.
+
+## Example 1: Leave Request Approval
+
+### Process
+
+```text
+Employee Submits Leave Request
+            ↓
+Manager Review
+      ↙           ↘
+ Approved       Rejected
+      ↓             ↓
+HR Notification   Employee Notification
+```
+
+### Benefits
+
+* Faster approvals
+* Reduced manual effort
+* Improved transparency
+
+---
+
+## Example 2: Expense Approval Workflow
+
+### Process
+
+```text
+Expense Submitted
+        ↓
+Amount Check
+        ↓
+Manager Approval
+        ↓
+Finance Approval
+        ↓
+Payment Processing
+```
+
+### Business Rule
+
+* Expenses below ₹10,000 require manager approval.
+* Expenses above ₹10,000 require both manager and finance approval.
+
+---
+
+## Example 3: Opportunity Discount Approval
+
+### Process
+
+```text
+Sales Representative Requests Discount
+                 ↓
+Discount Percentage Check
+          ↙                 ↘
+Less than 15%         Greater than 15%
+      ↓                      ↓
+Auto Approval         Manager Approval
+                              ↓
+                       Final Decision
+```
+
+### Benefits
+
+* Protects revenue
+* Ensures compliance with pricing policies
+* Maintains approval records
+
+---
+
+# Branching Flow Logic
+
+Branching logic allows a flow to follow different paths based on conditions.
+
+## What is Branching?
+
+Branching is implemented using Decision elements in Salesforce Flow.
+
+### Example: Customer Support Priority Flow
+
+```text
+New Support Case
+        ↓
+Priority Decision
+        ↓
+ ┌───────────────┬───────────────┬───────────────┐
+ │ High          │ Medium        │ Low           │
+ ↓               ↓               ↓
+Escalate     Assign Team     Queue Case
+```
+
+---
+
+## Example: Loan Application Flow
+
+```text
+Loan Application
+        ↓
+Credit Score Check
+        ↓
+ ┌───────────────┬───────────────┐
+ │ Score ≥ 750   │ Score < 750   │
+ ↓               ↓
+Approved     Manual Review
+```
+
+---
+
+## Advantages of Branching Logic
+
+* Dynamic business processes
+* Better decision-making
+* Reduced manual intervention
+* Improved efficiency
+
+---
+
+# Governance
+
+## What is Governance?
+
+Governance is the framework used to manage and control business processes, automation, data, and system changes.
+
+In Salesforce, governance ensures that automation solutions remain maintainable, scalable, secure, and compliant with organizational requirements.
+
+---
+
+## Flow Governance Principles
+
+### 1. Naming Standards
+
+Use clear and consistent naming conventions.
+
+Example:
+
+```text
+Good:
+Opportunity_Approval_Flow
+
+Bad:
+Flow1
+```
+
+---
+
+### 2. Documentation
+
+Every flow should include:
+
+* Purpose
+* Business owner
+* Trigger conditions
+* Expected outcomes
+
+Benefits:
+
+* Easier maintenance
+* Better team collaboration
+
+---
+
+### 3. Version Management
+
+Always maintain versions of flows.
+
+Example:
+
+```text
+Opportunity Approval Flow v1.0
+Opportunity Approval Flow v2.0
+```
+
+Benefits:
+
+* Rollback support
+* Change tracking
+
+---
+
+### 4. Testing Before Deployment
+
+Flows should be tested in:
+
+* Sandbox Environments
+* Scratch Orgs
+* Staging Environments
+
+Benefits:
+
+* Fewer production issues
+* Improved reliability
+
+---
+
+### 5. Security Controls
+
+Ensure that flows respect:
+
+* User permissions
+* Sharing rules
+* Data access restrictions
+
+Benefits:
+
+* Better compliance
+* Reduced security risks
+
+---
+
+# Governance Challenges
+
+Organizations often face governance challenges when automation grows.
+
+### Challenge 1: Too Many Flows
+
+Problem:
+
+Multiple flows perform similar actions.
+
+Solution:
+
+Consolidate automation where possible.
+
+---
+
+### Challenge 2: Poor Documentation
+
+Problem:
+
+Teams do not understand existing automation.
+
+Solution:
+
+Maintain detailed documentation.
+
+---
+
+### Challenge 3: Performance Issues
+
+Problem:
+
+Complex flows increase processing time.
+
+Solution:
+
+Optimize flow design and reduce unnecessary elements.
+
+---
+
+### Challenge 4: Uncontrolled Changes
+
+Problem:
+
+Developers modify production flows directly.
+
+Solution:
+
+Use change management processes and version control.
+
+---
+
+# Enterprise Workflow Example
+
+```text
+Business Requirement
+          ↓
+Flow Design
+          ↓
+Development
+          ↓
+Testing
+          ↓
+Code Review
+          ↓
+Approval
+          ↓
+Deployment
+          ↓
+Monitoring
+```
+
+### Benefits
+
+* Higher quality automation
+* Reduced deployment risks
+* Better maintainability
+* Improved compliance
+
+---
+
+# Reflection
+
+This exercise helped me understand the importance of approval workflows, branching logic, and governance in Salesforce automation.
+
+### Key Learnings
+
+* Approval workflows automate business decision-making.
+* Branching logic allows flows to adapt dynamically to different scenarios.
+* Governance ensures consistency, quality, and maintainability.
+* Documentation and version management are critical for long-term success.
+* Enterprise organizations require structured automation practices.
+
+### Importance in Enterprise Systems
+
+Large organizations often rely on hundreds of automated processes. Without governance, automation can become difficult to maintain and may introduce performance, security, and compliance issues.
+
+By implementing approval workflows, decision-based branching, and governance standards, organizations can build scalable and reliable Salesforce solutions that support business growth.
+
+### Conclusion
+
+Flow Governance is essential for managing Salesforce automation effectively. Combined with approval workflows and branching logic, it helps organizations create secure, efficient, and maintainable business processes while ensuring compliance with enterprise standards.
