@@ -1,0 +1,410 @@
+# Day 16 – Debugging and Best Practices
+
+## Introduction
+
+Debugging is the process of identifying, analyzing, and fixing issues in software applications. Effective debugging helps developers maintain application quality, improve performance, and ensure a better user experience.
+
+In Salesforce development, debugging involves analyzing Apex code, Flows, Lightning Web Components (LWC), integrations, and system logs to identify and resolve problems.
+
+---
+
+# Common Bug Scenarios
+
+Software applications commonly experience issues due to coding errors, configuration problems, or unexpected user inputs.
+
+## 1. Validation Rule Errors
+
+### Scenario
+
+A user attempts to save a record but receives an unexpected validation error.
+
+### Example
+
+```text id="o7t0eo"
+Close Date must be greater than Today
+```
+
+### Root Cause
+
+Validation rule logic is incorrect or too restrictive.
+
+---
+
+## 2. Apex Exception Errors
+
+### Scenario
+
+An Apex class fails during execution.
+
+### Example
+
+```text id="m6a5po"
+System.NullPointerException
+```
+
+### Root Cause
+
+A variable contains a null value that is referenced before initialization.
+
+---
+
+## 3. Flow Failures
+
+### Scenario
+
+A record-triggered flow fails to update records.
+
+### Root Cause
+
+* Missing permissions
+* Incorrect conditions
+* Invalid field references
+
+---
+
+## 4. LWC Data Not Displaying
+
+### Scenario
+
+Data is not visible in the Lightning Web Component.
+
+### Example
+
+```javascript id="ecws53"
+@wire(getAccounts)
+accounts;
+```
+
+### Possible Causes
+
+* Apex method failure
+* Missing permissions
+* Incorrect field references
+
+---
+
+## 5. Integration Failures
+
+### Scenario
+
+External API callouts fail.
+
+### Possible Causes
+
+* Network issues
+* Authentication failures
+* Incorrect endpoints
+
+---
+
+# Debugging Approach
+
+A structured debugging process helps identify issues efficiently.
+
+## Step 1: Reproduce the Problem
+
+Verify that the issue can be consistently reproduced.
+
+### Questions
+
+* What action causes the issue?
+* Is the issue consistent?
+* Which users are affected?
+
+---
+
+## Step 2: Gather Information
+
+Collect relevant information.
+
+### Sources
+
+* Error messages
+* Debug logs
+* Flow error emails
+* Browser console logs
+
+---
+
+## Step 3: Isolate the Cause
+
+Determine where the issue occurs.
+
+### Example
+
+```text id="e7o5w5"
+User Interface
+      ↓
+LWC
+      ↓
+Apex
+      ↓
+Database
+```
+
+Identify the layer causing the problem.
+
+---
+
+## Step 4: Apply Fixes
+
+Implement the necessary corrections.
+
+Examples:
+
+* Correct field references
+* Update Apex logic
+* Modify Flow conditions
+
+---
+
+## Step 5: Test the Solution
+
+Verify:
+
+* Original issue is resolved.
+* No new issues were introduced.
+
+---
+
+## Salesforce Debugging Tools
+
+### Debug Logs
+
+Used to analyze Apex execution.
+
+### Flow Debugger
+
+Used to test and troubleshoot flows.
+
+### Developer Console
+
+Provides logs and query tools.
+
+### Browser Developer Tools
+
+Useful for debugging Lightning Web Components.
+
+---
+
+# Performance Discussion
+
+Performance is critical for enterprise applications.
+
+Poor performance affects productivity, user satisfaction, and system scalability.
+
+## Common Performance Issues
+
+### Excessive SOQL Queries
+
+Bad Example:
+
+```apex id="d8tt4j"
+for(Account acc : accounts){
+    [SELECT Id FROM Contact WHERE AccountId=:acc.Id];
+}
+```
+
+### Issue
+
+SOQL executed inside loops.
+
+---
+
+### Excessive DML Operations
+
+Bad Example:
+
+```apex id="9kl9r2"
+for(Account acc : accounts){
+    update acc;
+}
+```
+
+### Issue
+
+Multiple unnecessary database operations.
+
+---
+
+### Large Data Processing
+
+Processing large datasets inefficiently may cause governor limit failures.
+
+### Solution
+
+Use:
+
+* Batch Apex
+* Queueable Apex
+* Efficient queries
+
+---
+
+## Performance Optimization Techniques
+
+### Use Bulk Processing
+
+Handle multiple records simultaneously.
+
+### Minimize Database Calls
+
+Reduce SOQL and DML usage.
+
+### Use Caching
+
+Improve response times.
+
+### Optimize Flows
+
+Avoid unnecessary flow executions.
+
+### Monitor Performance
+
+Use debug logs and performance monitoring tools.
+
+---
+
+# LWC Best Practices
+
+Lightning Web Components should be designed for maintainability, performance, and scalability.
+
+## 1. Keep Components Small and Reusable
+
+Create focused components with a single responsibility.
+
+### Example
+
+```text id="g2pnv0"
+AccountList Component
+ContactList Component
+Dashboard Component
+```
+
+---
+
+## 2. Use @wire When Appropriate
+
+Benefits:
+
+* Automatic data refresh
+* Improved performance
+
+### Example
+
+```javascript id="cn5t5x"
+@wire(getAccounts)
+accounts;
+```
+
+---
+
+## 3. Handle Errors Properly
+
+Example:
+
+```javascript id="4k7j1w"
+.catch(error => {
+    console.error(error);
+});
+```
+
+Benefits:
+
+* Better user experience
+* Easier troubleshooting
+
+---
+
+## 4. Avoid Unnecessary Re-renders
+
+Update only required data.
+
+Benefits:
+
+* Faster UI performance
+* Reduced browser load
+
+---
+
+## 5. Follow Naming Conventions
+
+Example:
+
+```text id="tjlwmj"
+accountDashboard
+contactManager
+salesReport
+```
+
+Benefits:
+
+* Better readability
+* Easier maintenance
+
+---
+
+## 6. Separate Frontend and Backend Logic
+
+### Frontend
+
+* User interface
+* User interactions
+
+### Backend
+
+* Business logic
+* Database operations
+
+Benefits:
+
+* Cleaner architecture
+* Better scalability
+
+---
+
+# Enterprise Debugging Workflow
+
+```text id="u06n4z"
+Issue Reported
+       ↓
+Reproduce Issue
+       ↓
+Collect Logs
+       ↓
+Root Cause Analysis
+       ↓
+Implement Fix
+       ↓
+Testing
+       ↓
+Code Review
+       ↓
+Deployment
+       ↓
+Monitoring
+```
+
+---
+
+# Reflection
+
+This exercise helped me understand how debugging and best practices contribute to software quality and maintainability.
+
+### Key Learnings
+
+* Bugs can occur in Apex, Flows, LWCs, integrations, and configurations.
+* Structured debugging improves problem resolution efficiency.
+* Performance optimization is essential for enterprise applications.
+* LWC components should be reusable, maintainable, and efficient.
+* Debugging tools help identify issues quickly and accurately.
+
+### Importance in Enterprise Applications
+
+Enterprise systems support large numbers of users and process significant amounts of data. Small issues can have widespread business impacts if not addressed properly.
+
+By following debugging methodologies, performance optimization techniques, and LWC best practices, developers can build reliable and scalable Salesforce applications.
+
+### Conclusion
+
+Debugging is not only about fixing errors but also about understanding system behavior and improving software quality. Combined with performance optimization and development best practices, effective debugging ensures that Salesforce applications remain stable, secure, and efficient throughout their lifecycle.
