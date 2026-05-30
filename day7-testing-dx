@@ -1,0 +1,291 @@
+# Day 7 – Testing and Salesforce DX
+
+## 1. Why Testing Matters
+
+Testing is a critical part of software development because it helps ensure that applications work as expected. In Salesforce, testing verifies that business logic, triggers, Apex classes, and integrations function correctly before deployment.
+
+### Benefits of Testing:
+
+* Detects bugs before production deployment.
+* Improves application reliability and quality.
+* Ensures business requirements are met.
+* Prevents future changes from breaking existing functionality.
+* Required for Salesforce deployments (minimum 75% Apex code coverage).
+
+Without proper testing, errors can affect users, business processes, and data integrity.
+
+---
+
+## 2. What is Asynchronous Apex?
+
+Asynchronous Apex allows Salesforce processes to run in the background without making users wait for completion. It is useful for handling long-running operations, large data volumes, and external integrations.
+
+### Types of Asynchronous Apex
+
+#### Future Methods
+
+Used for simple background processing.
+
+```apex
+@future
+public static void processData() {
+    // Background processing
+}
+```
+
+#### Queueable Apex
+
+Provides more flexibility and supports complex jobs.
+
+```apex
+public class MyQueueableJob implements Queueable {
+    public void execute(QueueableContext context) {
+        // Job logic
+    }
+}
+```
+
+#### Batch Apex
+
+Processes large numbers of records in manageable batches.
+
+```apex
+Database.executeBatch(new MyBatchClass());
+```
+
+#### Scheduled Apex
+
+Runs jobs automatically at specified times.
+
+```apex
+System.schedule('Daily Job', cronExpression, new MyScheduler());
+```
+
+### Advantages
+
+* Better performance.
+* Handles large datasets efficiently.
+* Improves user experience.
+* Supports automation and integrations.
+
+---
+
+## 3. What is Salesforce DX?
+
+Salesforce DX (Developer Experience) is a modern development framework that enables source-driven development, team collaboration, version control, and automated deployments.
+
+### Key Features
+
+#### Source-Driven Development
+
+Metadata is stored as source code.
+
+#### Scratch Orgs
+
+Temporary Salesforce environments used for development and testing.
+
+#### CLI (Command Line Interface)
+
+Allows developers to manage Salesforce projects from the terminal.
+
+Example:
+
+```bash
+sf org create scratch
+sf project deploy start
+sf apex run test
+```
+
+#### Version Control Integration
+
+Works seamlessly with Git and GitHub.
+
+#### Continuous Integration/Continuous Deployment (CI/CD)
+
+Supports automated testing and deployments.
+
+### Benefits
+
+* Faster development cycles.
+* Better collaboration among developers.
+* Easier deployment management.
+* Improved release quality.
+
+---
+
+## 4. Complete System Workflow (End-to-End Explanation)
+
+### Step 1: Requirement Analysis
+
+Business requirements are gathered and documented.
+
+### Step 2: Development
+
+Developers create Apex classes, triggers, Lightning Web Components, and Flows.
+
+### Step 3: Source Control
+
+Code is committed to Git repositories.
+
+```bash
+git add .
+git commit -m "Added new feature"
+git push origin main
+```
+
+### Step 4: Scratch Org Creation
+
+Developers create temporary environments for development and testing.
+
+```bash
+sf org create scratch
+```
+
+### Step 5: Deployment to Scratch Org
+
+Metadata is deployed for validation.
+
+```bash
+sf project deploy start
+```
+
+### Step 6: Testing
+
+Apex test classes are executed.
+
+```bash
+sf apex run test
+```
+
+### Step 7: Code Review
+
+Team members review code quality, security, and best practices.
+
+### Step 8: CI/CD Pipeline
+
+Automated tools build, test, and validate the application.
+
+### Step 9: Deployment to Production
+
+After successful testing, code is deployed to production.
+
+### Step 10: Monitoring and Maintenance
+
+Applications are monitored and updated when necessary.
+
+### Workflow Diagram
+
+```
+Requirements
+      ↓
+Development
+      ↓
+Git Repository
+      ↓
+Scratch Org
+      ↓
+Testing
+      ↓
+Code Review
+      ↓
+CI/CD Pipeline
+      ↓
+Production Deployment
+      ↓
+Maintenance
+```
+
+---
+
+## 5. Important Test Cases (Examples)
+
+### Test Case 1: Account Creation
+
+**Objective:** Verify account creation.
+
+**Steps:**
+
+1. Create an Account record.
+2. Save the record.
+3. Verify successful creation.
+
+**Expected Result:**
+Account record is created successfully.
+
+---
+
+### Test Case 2: Trigger Validation
+
+**Objective:** Verify trigger logic.
+
+**Steps:**
+
+1. Insert test records.
+2. Execute trigger.
+3. Verify field updates.
+
+**Expected Result:**
+Trigger updates fields correctly.
+
+---
+
+### Test Case 3: Future Method Execution
+
+**Objective:** Verify asynchronous processing.
+
+**Steps:**
+
+1. Invoke future method.
+2. Use Test.startTest().
+3. Use Test.stopTest().
+
+**Expected Result:**
+Future method executes successfully.
+
+---
+
+### Test Case 4: Batch Apex Processing
+
+**Objective:** Validate batch execution.
+
+**Steps:**
+
+1. Create test records.
+2. Execute batch class.
+3. Verify processed records.
+
+**Expected Result:**
+All records are processed correctly.
+
+---
+
+### Test Case 5: Lightning Web Component Functionality
+
+**Objective:** Verify UI behavior.
+
+**Steps:**
+
+1. Load component.
+2. Enter data.
+3. Submit form.
+
+**Expected Result:**
+Component displays expected output.
+
+---
+
+## 6. Reflection: Why Enterprise Software Development Needs Structured Workflows
+
+Enterprise software systems are large, complex, and used by many users. A structured workflow ensures that development activities are organized, predictable, and maintainable.
+
+### Reasons Structured Workflows Are Important
+
+* Improves software quality through testing and reviews.
+* Reduces deployment risks.
+* Encourages collaboration among team members.
+* Enables version control and traceability.
+* Supports continuous improvement and maintenance.
+* Ensures compliance with organizational standards.
+* Makes troubleshooting and debugging easier.
+
+In Salesforce projects, combining Testing, Salesforce DX, Git, and CI/CD creates a reliable development process that helps teams deliver secure, scalable, and high-quality applications efficiently.
