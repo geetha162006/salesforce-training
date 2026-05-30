@@ -1,0 +1,280 @@
+# Day 12 – Salesforce DX Workflow
+
+## What is Salesforce DX?
+
+Salesforce DX (Developer Experience) is a modern development framework provided by Salesforce that enables source-driven development, team collaboration, version control, and automated deployment processes.
+
+Salesforce DX helps developers build, test, and deploy applications more efficiently using tools such as Scratch Orgs, Salesforce CLI, and Git-based workflows.
+
+### Key Features of Salesforce DX
+
+* Source-driven development
+* Scratch Orgs
+* Salesforce CLI
+* Version control integration
+* Continuous Integration and Continuous Deployment (CI/CD)
+* Team collaboration support
+
+### Benefits
+
+* Faster development cycles
+* Better code management
+* Improved deployment processes
+* Easier collaboration among teams
+* Higher software quality
+
+---
+
+# Why CLI Matters
+
+CLI (Command Line Interface) is one of the most important components of Salesforce DX.
+
+The Salesforce CLI allows developers to interact with Salesforce environments directly from the terminal without using the graphical interface.
+
+### Common CLI Commands
+
+#### Create a Scratch Org
+
+```bash id="8o7vpx"
+sf org create scratch
+```
+
+#### Deploy Source
+
+```bash id="9pshn0"
+sf project deploy start
+```
+
+#### Run Apex Tests
+
+```bash id="x5o9bq"
+sf apex run test
+```
+
+#### Retrieve Metadata
+
+```bash id="4kw47j"
+sf project retrieve start
+```
+
+### Why CLI is Important
+
+* Automates repetitive tasks
+* Increases developer productivity
+* Enables CI/CD pipelines
+* Supports scripting and automation
+* Reduces manual deployment errors
+
+### Enterprise Benefits
+
+Organizations can automate development and deployment activities, improving consistency and efficiency.
+
+---
+
+# Why GitHub Matters
+
+GitHub is a platform used for version control and collaboration.
+
+It helps teams manage source code changes and track project history.
+
+### Benefits of GitHub
+
+### Version Control
+
+Tracks all changes made to project files.
+
+### Collaboration
+
+Multiple developers can work on the same project simultaneously.
+
+### Backup and Recovery
+
+Code is stored securely in remote repositories.
+
+### Code Reviews
+
+Team members can review and approve changes before deployment.
+
+### Integration with CI/CD
+
+GitHub works seamlessly with automation tools for testing and deployment.
+
+### Common Git Commands
+
+```bash id="slyuk4"
+git add .
+git commit -m "Added new feature"
+git push origin main
+```
+
+### Why Enterprises Use GitHub
+
+* Better collaboration
+* Change tracking
+* Improved code quality
+* Faster development cycles
+* Safer deployments
+
+---
+
+# Team Collaboration Problems
+
+Software development teams often face collaboration challenges when proper workflows are not followed.
+
+### Problem 1: Code Conflicts
+
+Multiple developers may modify the same file at the same time.
+
+### Solution
+
+Use Git branches and pull requests.
+
+---
+
+### Problem 2: Deployment Errors
+
+Manual deployments can introduce mistakes.
+
+### Solution
+
+Use Salesforce DX and automated deployment pipelines.
+
+---
+
+### Problem 3: Lack of Version Tracking
+
+Without version control, teams may lose important code changes.
+
+### Solution
+
+Store all source code in GitHub repositories.
+
+---
+
+### Problem 4: Environment Differences
+
+Developers may work in different environments, causing inconsistencies.
+
+### Solution
+
+Use Scratch Orgs for standardized development environments.
+
+---
+
+### Problem 5: Poor Communication
+
+Changes made by one developer may not be visible to others.
+
+### Solution
+
+Use pull requests, code reviews, and documentation.
+
+---
+
+# Enterprise Workflow Discussion
+
+Modern Salesforce projects follow structured workflows to ensure quality and reliability.
+
+## Enterprise Development Workflow
+
+```text id="m32rrh"
+Business Requirements
+          ↓
+Development
+          ↓
+Scratch Org
+          ↓
+Git Repository
+          ↓
+Code Review
+          ↓
+Automated Testing
+          ↓
+CI/CD Pipeline
+          ↓
+Staging Environment
+          ↓
+Production Deployment
+          ↓
+Monitoring & Maintenance
+```
+
+---
+
+## Workflow Explanation
+
+### Step 1: Requirement Analysis
+
+Business requirements are collected and documented.
+
+### Step 2: Development
+
+Developers create Apex classes, Lightning Web Components, Flows, and configurations.
+
+### Step 3: Scratch Org Usage
+
+Temporary environments are created for development and testing.
+
+### Step 4: Source Control
+
+Code is committed to GitHub repositories.
+
+### Step 5: Code Review
+
+Team members review code quality and functionality.
+
+### Step 6: Automated Testing
+
+Apex tests and validation checks are executed automatically.
+
+### Step 7: CI/CD Pipeline
+
+Changes are automatically built, tested, and deployed.
+
+### Step 8: Staging Validation
+
+The application is verified in a staging environment.
+
+### Step 9: Production Release
+
+Approved changes are deployed to production.
+
+### Step 10: Monitoring
+
+The system is monitored for issues and performance.
+
+---
+
+## Benefits of Enterprise Workflows
+
+* Higher software quality
+* Faster delivery
+* Better collaboration
+* Reduced deployment risks
+* Improved scalability
+* Easier maintenance
+
+---
+
+# Reflection
+
+This exercise helped me understand how Salesforce DX supports modern software development practices.
+
+### Key Learnings
+
+* Salesforce DX enables source-driven development.
+* Salesforce CLI automates development and deployment tasks.
+* GitHub provides version control and collaboration capabilities.
+* Structured workflows help teams manage complex projects efficiently.
+* Scratch Orgs create consistent development environments.
+* CI/CD pipelines improve deployment reliability.
+
+### Importance in Enterprise Development
+
+Large organizations require reliable, repeatable, and scalable development processes. Salesforce DX, GitHub, and CLI tools work together to create a structured workflow that supports collaboration, automation, testing, and deployment.
+
+By following these practices, teams can build high-quality Salesforce applications more efficiently while reducing risks associated with manual processes and inconsistent environments.
+
+### Conclusion
+
+Salesforce DX is a critical part of modern Salesforce development. Combined with GitHub, CLI tools, testing, and CI/CD processes, it enables organizations to deliver secure, scalable, and maintainable applications using industry-standard development workflows.
