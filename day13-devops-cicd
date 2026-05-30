@@ -1,0 +1,326 @@
+# Day 13 – DevOps and CI/CD
+
+## What is CI/CD?
+
+CI/CD stands for **Continuous Integration (CI)** and **Continuous Deployment/Continuous Delivery (CD)**. It is a modern software development practice that automates the process of building, testing, and deploying applications.
+
+### Continuous Integration (CI)
+
+Continuous Integration is the practice of frequently merging code changes into a shared repository where automated tests are executed.
+
+#### Benefits of CI
+
+* Early bug detection
+* Faster development cycles
+* Improved code quality
+* Better team collaboration
+* Reduced integration issues
+
+### Continuous Delivery (CD)
+
+Continuous Delivery ensures that code changes are automatically prepared for deployment after passing all tests.
+
+#### Benefits of Continuous Delivery
+
+* Faster releases
+* Reduced deployment risk
+* Improved reliability
+* Easier rollback procedures
+
+### Continuous Deployment
+
+Continuous Deployment automatically releases approved changes to production without manual intervention.
+
+---
+
+## Why Deployment Workflow Matters
+
+A deployment workflow defines the steps required to move software from development to production safely and consistently.
+
+### Typical Deployment Workflow
+
+```text
+Developer
+    ↓
+GitHub Repository
+    ↓
+Code Review
+    ↓
+Automated Testing
+    ↓
+Build Process
+    ↓
+Staging Environment
+    ↓
+Production Deployment
+```
+
+### Importance of Deployment Workflows
+
+* Ensures quality before release.
+* Prevents deployment failures.
+* Reduces manual errors.
+* Maintains application stability.
+* Improves release consistency.
+* Supports large development teams.
+
+Without a structured deployment workflow, software releases become risky and difficult to manage.
+
+---
+
+## Problems Without Version Control
+
+Version control systems such as Git help track and manage source code changes.
+
+Without version control, development teams may face serious challenges.
+
+### Problem 1: Lost Code
+
+Developers may accidentally overwrite important work.
+
+### Problem 2: No Change History
+
+Teams cannot identify when or why changes were made.
+
+### Problem 3: Difficult Collaboration
+
+Multiple developers working on the same files can create conflicts.
+
+### Problem 4: No Rollback Capability
+
+Failed changes cannot be easily reverted.
+
+### Problem 5: Deployment Confusion
+
+Teams may deploy outdated or incomplete code.
+
+### Example Scenario
+
+```text
+Developer A modifies Account Logic
+Developer B modifies Account Logic
+
+Without Git:
+    → Changes may overwrite each other
+
+With Git:
+    → Changes are tracked and merged safely
+```
+
+### Benefits of Version Control
+
+* Code history tracking
+* Team collaboration
+* Backup and recovery
+* Branch management
+* Release management
+
+---
+
+## GitHub + DX + DevOps Explanation
+
+Modern Salesforce development combines GitHub, Salesforce DX, and DevOps practices.
+
+### GitHub
+
+GitHub provides:
+
+* Source control
+* Branching
+* Pull requests
+* Code reviews
+* Collaboration
+
+### Salesforce DX
+
+Salesforce DX provides:
+
+* Scratch Orgs
+* Source-driven development
+* Salesforce CLI
+* Automated testing support
+
+### DevOps
+
+DevOps provides:
+
+* Automation
+* Continuous Integration
+* Continuous Deployment
+* Monitoring
+* Release management
+
+### Combined Workflow
+
+```text
+Developer
+      ↓
+Scratch Org (Salesforce DX)
+      ↓
+GitHub Repository
+      ↓
+Pull Request
+      ↓
+Code Review
+      ↓
+Automated Testing
+      ↓
+CI/CD Pipeline
+      ↓
+Staging Environment
+      ↓
+Production Deployment
+```
+
+### Benefits of Integration
+
+* Faster development
+* Better collaboration
+* Automated quality checks
+* Safer deployments
+* Improved scalability
+
+---
+
+## Enterprise Deployment Risks
+
+Enterprise applications often serve thousands or millions of users. Poor deployment practices can create major business problems.
+
+### Risk 1: Production Failures
+
+New releases may contain bugs that affect users.
+
+### Impact
+
+* Service disruptions
+* Customer dissatisfaction
+
+### Prevention
+
+* Automated testing
+* Staging validation
+
+---
+
+### Risk 2: Data Corruption
+
+Incorrect deployments may modify critical business data.
+
+### Impact
+
+* Data loss
+* Compliance issues
+
+### Prevention
+
+* Backup procedures
+* Validation testing
+
+---
+
+### Risk 3: Security Vulnerabilities
+
+New code may introduce security flaws.
+
+### Impact
+
+* Unauthorized access
+* Data breaches
+
+### Prevention
+
+* Security reviews
+* Automated scanning
+
+---
+
+### Risk 4: Downtime
+
+Failed deployments can make applications unavailable.
+
+### Impact
+
+* Revenue loss
+* Reduced productivity
+
+### Prevention
+
+* Rollback strategies
+* Deployment monitoring
+
+---
+
+### Risk 5: Configuration Errors
+
+Different environments may contain inconsistent settings.
+
+### Impact
+
+* Unexpected behavior
+* Deployment failures
+
+### Prevention
+
+* Salesforce DX source control
+* Standardized environments
+
+---
+
+## Enterprise CI/CD Workflow Example
+
+```text
+Requirements
+      ↓
+Development
+      ↓
+Scratch Org
+      ↓
+GitHub Commit
+      ↓
+Pull Request
+      ↓
+Code Review
+      ↓
+Automated Tests
+      ↓
+CI Pipeline
+      ↓
+CD Pipeline
+      ↓
+Staging Validation
+      ↓
+Production Release
+      ↓
+Monitoring
+```
+
+---
+
+## Reflection
+
+This exercise helped me understand the importance of DevOps practices and CI/CD pipelines in modern Salesforce development.
+
+### Key Learnings
+
+* CI/CD automates testing and deployment processes.
+* Deployment workflows improve software quality and reliability.
+* GitHub provides version control and collaboration capabilities.
+* Salesforce DX enables source-driven development.
+* DevOps combines people, processes, and automation to improve software delivery.
+* Enterprise deployments require careful planning and risk management.
+
+### Importance for Enterprise Development
+
+Large organizations depend on reliable deployment processes to maintain business continuity and customer satisfaction. Manual deployments are often slow, error-prone, and difficult to scale.
+
+By combining GitHub, Salesforce DX, and CI/CD pipelines, teams can:
+
+* Deliver features faster.
+* Improve software quality.
+* Reduce deployment risks.
+* Enhance collaboration.
+* Maintain stable production environments.
+
+### Conclusion
+
+DevOps and CI/CD are essential components of modern enterprise software development. Together with GitHub and Salesforce DX, they create a structured, automated, and reliable workflow that helps organizations deliver high-quality Salesforce applications efficiently and safely.
