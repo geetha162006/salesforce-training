@@ -1,0 +1,400 @@
+# Day 10 – Salesforce CRM Mini Project
+
+## System Overview
+
+### Project Title
+
+**Customer Relationship Management (CRM) System**
+
+### Objective
+
+The CRM system helps organizations manage customer information, sales activities, opportunities, and interactions efficiently. It centralizes customer data and automates business processes to improve productivity and customer satisfaction.
+
+### Main Features
+
+* Customer Management
+* Lead Tracking
+* Opportunity Management
+* Activity Tracking
+* Automated Notifications
+* Dashboard Reporting
+* Workflow Automation
+
+### Users
+
+* Sales Representatives
+* Managers
+* Administrators
+* Customer Support Teams
+
+---
+
+# CRM Concepts
+
+CRM (Customer Relationship Management) is a strategy and technology used to manage customer interactions and business relationships.
+
+### Core CRM Concepts
+
+### Leads
+
+Potential customers who have shown interest in products or services.
+
+### Accounts
+
+Organizations or companies with which business is conducted.
+
+### Contacts
+
+Individuals associated with Accounts.
+
+### Opportunities
+
+Potential sales deals being tracked.
+
+### Activities
+
+Tasks, calls, meetings, and follow-ups related to customers.
+
+### Reports and Dashboards
+
+Tools used to analyze business performance and sales metrics.
+
+### Benefits of CRM
+
+* Better customer engagement
+* Increased sales efficiency
+* Centralized customer information
+* Improved decision-making
+* Enhanced business growth
+
+---
+
+# Data Model
+
+## Objects Used
+
+### Account
+
+Stores company information.
+
+| Field        | Type     |
+| ------------ | -------- |
+| Account Name | Text     |
+| Industry     | Picklist |
+| Phone        | Phone    |
+| Website      | URL      |
+
+---
+
+### Contact
+
+Stores customer information.
+
+| Field      | Type  |
+| ---------- | ----- |
+| First Name | Text  |
+| Last Name  | Text  |
+| Email      | Email |
+| Phone      | Phone |
+
+---
+
+### Opportunity
+
+Stores sales opportunity information.
+
+| Field            | Type     |
+| ---------------- | -------- |
+| Opportunity Name | Text     |
+| Stage            | Picklist |
+| Amount           | Currency |
+| Close Date       | Date     |
+
+---
+
+## Relationships
+
+```text
+Account
+   │
+   ├── Contact
+   │
+   └── Opportunity
+```
+
+### Relationship Explanation
+
+* One Account can have multiple Contacts.
+* One Account can have multiple Opportunities.
+* Contacts are associated with Accounts.
+* Opportunities represent potential revenue.
+
+---
+
+# Validation Rules
+
+Validation Rules ensure data quality and prevent invalid records.
+
+## Rule 1: Opportunity Amount Cannot Be Negative
+
+```text
+Amount < 0
+```
+
+**Error Message:**
+Opportunity amount cannot be negative.
+
+---
+
+## Rule 2: Close Date Must Be Future Date
+
+```text
+CloseDate < TODAY()
+```
+
+**Error Message:**
+Close date must be today or a future date.
+
+---
+
+## Rule 3: Email Format Validation
+
+Salesforce standard email validation is used to ensure correct email formats.
+
+---
+
+## Benefits
+
+* Improved data accuracy
+* Reduced manual errors
+* Better reporting quality
+
+---
+
+# Flows
+
+Salesforce Flow automates business processes without coding.
+
+## Flow Example: New Opportunity Notification
+
+### Flow Trigger
+
+When a new Opportunity is created.
+
+### Process
+
+```text
+Opportunity Created
+          ↓
+Check Amount
+          ↓
+Send Notification
+          ↓
+Update Record
+```
+
+### Outcome
+
+Managers receive notifications when high-value opportunities are created.
+
+---
+
+## Flow Benefits
+
+* Automation
+* Reduced manual work
+* Faster business processes
+
+---
+
+# Apex Logic
+
+Apex is used for advanced business logic that cannot be handled by Flow alone.
+
+## Example Apex Class
+
+```apex
+public with sharing class OpportunityController {
+
+    @AuraEnabled
+    public static List<Opportunity> getOpportunities() {
+
+        return [
+            SELECT Id, Name, Amount, StageName
+            FROM Opportunity
+            LIMIT 10
+        ];
+    }
+}
+```
+
+### Purpose
+
+* Retrieve Opportunity records.
+* Supply data to Lightning Web Components.
+* Support dashboard functionality.
+
+---
+
+## Example Trigger Logic
+
+```apex
+trigger OpportunityTrigger on Opportunity (before insert) {
+
+    for(Opportunity opp : Trigger.new) {
+
+        if(opp.Amount < 0) {
+            opp.addError('Amount cannot be negative.');
+        }
+    }
+}
+```
+
+### Purpose
+
+Prevent invalid opportunity amounts from being saved.
+
+---
+
+# UI Screens
+
+## Screen 1: Home Dashboard
+
+Displays:
+
+* Total Accounts
+* Total Opportunities
+* Revenue Summary
+* Recent Activities
+
+---
+
+## Screen 2: Account Record Page
+
+Displays:
+
+* Company Information
+* Contacts
+* Opportunities
+* Related Activities
+
+---
+
+## Screen 3: Opportunity Management Page
+
+Displays:
+
+* Opportunity Name
+* Stage
+* Amount
+* Close Date
+
+---
+
+## Screen 4: Reports and Dashboard
+
+Displays:
+
+* Sales Performance
+* Revenue Trends
+* Opportunity Pipeline
+
+### Add Your Screenshots Here
+
+Insert screenshots from your Salesforce project:
+
+1. Home Dashboard
+2. Account Page
+3. Opportunity Page
+4. Flow Builder
+5. LWC Component (if created)
+
+---
+
+# Complete Data Flow
+
+The following diagram shows the complete system workflow.
+
+```text
+User
+  ↓
+Lightning Web Component
+  ↓
+JavaScript Controller
+  ↓
+Apex Controller
+  ↓
+Salesforce Database
+  ↓
+Validation Rules
+  ↓
+Flow Automation
+  ↓
+Database Update
+  ↓
+Response to Apex
+  ↓
+LWC Refresh
+  ↓
+Updated UI
+```
+
+## Step-by-Step Explanation
+
+### Step 1
+
+User enters customer or opportunity data.
+
+### Step 2
+
+LWC captures user interaction.
+
+### Step 3
+
+JavaScript sends data to Apex.
+
+### Step 4
+
+Apex processes business logic.
+
+### Step 5
+
+Validation Rules verify data quality.
+
+### Step 6
+
+Records are saved in Salesforce.
+
+### Step 7
+
+Flows execute automation tasks.
+
+### Step 8
+
+Updated information is returned to the UI.
+
+### Step 9
+
+Users view updated records and dashboards.
+
+---
+
+# Reflection
+
+This mini project helped me understand how multiple Salesforce technologies work together to build enterprise CRM solutions.
+
+### Key Learnings
+
+* CRM concepts and customer management processes.
+* Data modeling using Accounts, Contacts, and Opportunities.
+* Data validation using Validation Rules.
+* Business process automation using Flows.
+* Backend development using Apex.
+* Frontend development using Lightning Web Components.
+* End-to-end system integration within Salesforce.
+
+### Importance of Enterprise Architecture
+
+Enterprise applications require structured workflows, secure data management, automation, and scalable design. Salesforce provides a complete ecosystem that integrates frontend interfaces, backend logic, automation tools, and reporting capabilities.
+
+This project demonstrated how Salesforce CRM can streamline business operations, improve productivity, and provide valuable insights through automation and centralized customer management.
