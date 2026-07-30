@@ -1,0 +1,50 @@
+# Placement Management System
+
+## Project Overview
+This project automates the Placement Management System using Salesforce Flows, Validation Rules, and Apex.
+
+## Features
+- Record-Triggered Flow to set Application Date
+- Validation Rules for CGPA, Application Date, and Mandatory Fields
+- Automatic Email Notification
+- Offer Letter creation when Status becomes Selected
+
+## Validation Rules
+
+### CGPA Validation
+Student__r.CGPA__c < Job__r.Minimum_CGPA__c
+
+### Application Date Validation
+Application_Date__c > Job__r.Last_Date__c
+
+### Mandatory Fields
+OR(
+ISBLANK(Student__c),
+ISBLANK(Job__c)
+)
+
+## Answers
+
+### 1. Which requirements did you solve using Flow?
+- Automatically set Application Date
+- Send Email Notification
+- Create Offer Letter when Status becomes Selected
+
+### 2. Which requirements required Validation Rules?
+- CGPA validation
+- Application Date validation
+- Mandatory field validation
+
+### 3. Which requirements still needed Apex?
+- Complex business logic
+- Bulk processing
+- Advanced automation
+
+### 4. Why did you choose those solutions?
+Flow was used for declarative automation without code.
+Validation Rules were used to ensure data quality.
+Apex was used where complex business logic and bulk processing were required.
+
+## Author
+Geetha Sree 
+24pa5a5705
